@@ -1,0 +1,35 @@
+class Solution {
+    private int sum=0;
+    public int rangeSumBST(TreeNode root, int low, int high) {
+        // Queue<TreeNode> q=new LinkedList<>();//LEVEL ORdER TRAVERSAL
+        // q.add(root);
+        // int sum=0;
+        // if(root==null)return 0;
+        // while(!q.isEmpty()){
+        //     int n=q.size();
+        //     for(int i=0;i<n;i++){
+        //         TreeNode t=q.remove();
+        //         if(t.val<=high && t.val>=low){
+        //             sum=sum+t.val;
+        //         }
+        //         if(t.left!=null){
+        //         q.offer(t.left);}
+        //         if(t.right!=null){
+        //         q.offer(t.right);}
+        //     }
+        // }
+        // return sum;
+        //RECURSION
+     if(root==null)return sum;
+     calculate(root,low,high);
+         return  sum;}
+    public void calculate(TreeNode root, int low, int high){
+        if(root==null)
+            return;//if it reaches end of left half it will go to top and go to right and follows this at each step
+       calculate(root.left,low,high);
+        if(root.val>=low && root.val<=high){
+            sum=sum+root.val;
+        }
+         calculate(root.right,low,high);
+    }
+}
